@@ -12,17 +12,17 @@ jobs:
   build:
     runs-on: ubutu-latest
     steps:
-      - uses actions/checkout@v3
-      - run docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run docker build -t daleever/react-test -f ./cliet/Dockerfile.dev ./client
-      - run docker run -e CI=true daleever/react-test npm test
+      - uses: actions/checkout@v3
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker build -t daleever/react-test -f ./cliet/Dockerfile.dev ./client
+      - run: docker run -e CI=true daleever/react-test npm test
 
-      - run docker build -t daleever/client ./client
-      - run docker build -t daleever/nginx ./nginx
-      - run docker build -t daleever/server ./server
-      - run docker build -t daleever/worker ./worker
+      - run: docker build -t daleever/client ./client
+      - run: docker build -t daleever/nginx ./nginx
+      - run: docker build -t daleever/server ./server
+      - run: docker build -t daleever/worker ./worker
 
-      - run docker push daleever/client
-      - run docker push daleever/nginx
-      - run docker push daleever/server
-      - run docker push daleever/worker
+      - run: docker push daleever/client
+      - run: docker push daleever/nginx
+      - run: docker push daleever/server
+      - run: docker push daleever/worker
