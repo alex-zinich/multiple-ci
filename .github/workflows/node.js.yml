@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubutu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
